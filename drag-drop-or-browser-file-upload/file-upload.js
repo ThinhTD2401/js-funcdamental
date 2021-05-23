@@ -49,21 +49,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
 
     function showFile(){
-        let fileType = file.type; //getting selected file type
-        let validExtensions = ["image/jpeg", "image/jpg", "image/png"]; //adding some valid image extensions in array
-        if(validExtensions.includes(fileType)){ //if user selected file is an image file
-          let fileReader = new FileReader(); //creating new FileReader object
+        let fileType = file.type; 
+        let validExtensions = ["image/jpeg", "image/jpg", "image/png"]; 
+        if(validExtensions.includes(fileType)){ 
+          let fileReader = new FileReader(); 
           fileReader.onload = ()=>{
-            let fileURL = fileReader.result; //passing user file source in fileURL variable
-              // UNCOMMENT THIS BELOW LINE. I GOT AN ERROR WHILE UPLOADING THIS POST SO I COMMENTED IT
-            let imgTag = `<img src="${fileURL}" alt="image">`; //creating an img tag and passing user selected file source inside src attribute
-            dragArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
+            let fileURL = fileReader.result; 
+            let imgTag = `<img src="${fileURL}" alt="image">`; 
+            dragArea.innerHTML = imgTag; 
+            dragArea.classList.add("active");
           }
           fileReader.readAsDataURL(file);
         }else{
           alert("This is not an Image File!");
           dragArea.classList.remove("active");
-          dragArea.textContent = "Drag & Drop to Upload File";
         }
       }
 });
