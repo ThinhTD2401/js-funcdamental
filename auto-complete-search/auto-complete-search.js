@@ -24,7 +24,7 @@ const suggestions = [
     "How to learn HTML & CSS",
     "How to learn JavaScript",
     "How to became Freelancer",
-    "How to became Web Designer",
+    "How to became Web Designer becAme beCAME",
     "How to start Gaming Channel",
     "How to start YouTube Channel",
     "What does HTML stands for?",
@@ -37,7 +37,7 @@ buttonSearch.onkeyup = (e) => {
 
     if (keyword) {
         datas = suggestions.filter(function(item){
-            return item.toLocaleLowerCase().startsWith(keyword.toLocaleLowerCase());
+            return item.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) !== -1;
         });
         showSuggestion(datas, keyword);
         //bindingEventSelected();
@@ -73,7 +73,29 @@ function select(element) {
     comboxSuggestion.classList.remove('active');
 }
 
-function addHightText(src, keyword) {
-    return src = src.replace(keyword, '<b>' + keyword + '</b>');
+function addHightText(str, keyword) {
+    var hasSub = true;
+    var result = '';
+    do{
+        if (keyword === '') {
+            hasSub = false;
+            result = str;
+        }
+        else 
+        {
+            var startIndex = str.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase());
+            if(startIndex === -1) {
+                hasSub = false;
+                result += str;
+            } else{
+                var endIndex = startIndex + keyword.length;
+                var orginalWord = str.substring(startIndex, endIndex);
+                result += str.substring(0, endIndex).replace(orginalWord, '<b>'+ orginalWord + '</b>');
+                str = str.substring(startIndex + keyword.length, str.length);
+            }
+        }
+       
+    } while(hasSub);
+    return result;
 }
 
