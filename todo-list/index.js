@@ -6,7 +6,7 @@ var todoList = (function(){
     const todoList = document.querySelector(".todoList");
     const deleteAllBtn = document.querySelector(".footer button");
     const pendingTasksNumb = document.querySelector(".pendingTasks");
-    const url = "https://json-server-td.herokuapp.com";
+    const url = "https://json-server-td.herokuapp.com/todolist";
     var listArray = [];
 
     this.init = function () {
