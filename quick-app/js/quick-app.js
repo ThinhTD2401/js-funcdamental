@@ -1,4 +1,5 @@
 (function(window){
+
   //selecting all required elements
   const start_btn = document.querySelector(".start_btn button");
   const info_box = document.querySelector(".info_box");
@@ -127,8 +128,6 @@
           userScore += 1; //upgrading score value with 1
           answer.classList.add("correct"); //adding green color to correct selected option
           answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
-          console.log("Correct Answer");
-          console.log("Your correct answers = " + userScore);
       }else{
           answer.classList.add("incorrect"); //adding red color to correct selected option
           answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
