@@ -18,7 +18,7 @@ body{
 }
 .wrapper{
   background: #fff;
-  max-width: 400px;
+  max-width: 800px;
   width: 100%;
   margin: 120px auto;
   padding: 25px;
@@ -28,6 +28,12 @@ body{
 .wrapper header{
   font-size: 30px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper header .heading {
+  margin-right: 10px;
 }
 .wrapper .inputField{
   margin: 20px 0;
@@ -36,7 +42,7 @@ body{
   height: 45px;
 }
 .inputField input{
-  width: 85%;
+  width: 92%;
   height: 100%;
   outline: none;
   border-radius: 3px;
@@ -45,9 +51,7 @@ body{
   padding-left: 15px;
   transition: all 0.3s ease;
 }
-.inputField input:focus{
-  border-color: #8E49E8;
-}
+
 .inputField button{
   width: 50px;
   height: 100%;
@@ -56,16 +60,17 @@ body{
   margin-left: 5px;
   font-size: 21px;
   outline: none;
-  background: #8E49E8;
+  background: #808080;
   cursor: pointer;
   border-radius: 3px;
   opacity: 0.6;
   pointer-events: none;
   transition: all 0.3s ease;
+  width: 8%;
 }
 .inputField button:hover,
 .footer button:hover{
-  background: #721ce3;
+  background: #a6aab6;
 }
 .inputField button.active{
   opacity: 1;
@@ -75,6 +80,19 @@ body{
   max-height: 250px;
   overflow-y: auto;
 }
+
+.wrapper .todoList input {
+    border: none;
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.wrapper .todoList input:focus-visible {
+    outline: none;
+}
+
 .todoList li{
   position: relative;
   list-style: none;
@@ -86,20 +104,25 @@ body{
   padding: 0 15px;
   cursor: default;
   overflow: hidden;
+  z-index: 10;
+}
+
+.todoList li input {
+  z-index: 12;
 }
 .todoList li .icon{
   position: absolute;
-  right: -45px;
-  background: #e74c3c;
   width: 45px;
+  right: 0px;
   text-align: center;
-  color: #fff;
+  color: gray;
   border-radius: 0 3px 3px 0;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.todoList li:hover .icon{
-  right: 0px;
+
+.todoList li .icon:hover {
+  transform: scale(1.2);
 }
 .wrapper .footer{
   display: flex;
@@ -117,7 +140,7 @@ body{
   font-weight: 400;
   font-size: 16px;
   margin-left: 5px;
-  background: #8E49E8;
+  background: #808080;
   cursor: pointer;
   user-select: none;
   opacity: 0.6;
@@ -128,3 +151,33 @@ body{
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Loader */
+
+.loader {
+  border: 2px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2px solid #808080;
+  ;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  opacity: 0;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-active {
+  opacity: 1;
+}
+
